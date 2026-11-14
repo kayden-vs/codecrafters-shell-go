@@ -45,9 +45,10 @@ func main() {
 					for s := range buildin {
 						if s == words[1] {
 							fmt.Println(s + " is a shell builtin")
-							continue
+							break
 						}
 					}
+					continue
 				}
 			}
 
