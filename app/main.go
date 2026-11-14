@@ -60,19 +60,17 @@ func main() {
 		}
 
 		// run the exec
-		if len(words) > 0 {
-			path, err = exec.LookPath(firstWord)
-			if err == nil {
-				var extcmd exec.Cmd
-				extcmd.Path = path
-				extcmd.Args = words
-				output, err := extcmd.Output()
-				if err != nil {
-					fmt.Println("Error executing the external command", err)
-				}
-				fmt.Println(string(output))
-				continue
+		path, err = exec.LookPath(firstWord)
+		if err == nil {
+			var extcmd exec.Cmd
+			extcmd.Path = path
+			extcmd.Args = words
+			output, err := extcmd.Output()
+			if err != nil {
+				fmt.Println("Error executing the external command", err)
 			}
+			fmt.Println(string(output))
+			continue
 		}
 
 		fmt.Println(command + ": command not found")
