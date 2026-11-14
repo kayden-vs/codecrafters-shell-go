@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"strings"
 )
 
@@ -63,6 +62,16 @@ func main() {
 			continue
 		}
 
+		// pwd
+		if firstWord == "pwd" {
+			wd, err := os.Getwd()
+			if err != nil {
+				panic(err)
+			}
+			fmt.Println(wd)
+			continue
+		}
+
 		// exec ext cmd
 		extcmd := exec.Command(firstWord, words[1:]...)
 		if extcmd.Err == nil {
@@ -71,17 +80,6 @@ func main() {
 				fmt.Println("Error executing the external command", err)
 			}
 			fmt.Print(string(output))
-			continue
-		}
-
-		// pwd
-		if firstWord == "pwd" {
-			ex, err := os.Executable()
-			if err != nil {
-				panic(err)
-			}
-			exPath := filepath.Dir(ex)
-			fmt.Println(exPath)
 			continue
 		}
 
