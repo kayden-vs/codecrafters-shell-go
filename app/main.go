@@ -65,7 +65,7 @@ func main() {
 			if err == nil {
 				var extcmd exec.Cmd
 				extcmd.Path = path
-				extcmd.Args = words[1:]
+				extcmd.Args = words
 				output, err := extcmd.Output()
 				if err != nil {
 					fmt.Println("Error executing the external command", err)
