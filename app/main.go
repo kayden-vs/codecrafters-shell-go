@@ -43,6 +43,8 @@ func main() {
 					continue
 				}
 			}
+			fmt.Println(command[5:] + ": command not found")
+			continue
 		}
 
 		fmt.Println(command + ": command not found")
