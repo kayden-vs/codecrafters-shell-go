@@ -17,7 +17,8 @@ func main() {
 
 		command, err := bufio.NewReader(os.Stdin).ReadString('\n')
 		command = command[:len(command)-1]
-		// firstWord := strings.Fields(command)[0]
+		words := strings.Fields(command)
+		firstWord := words[0]
 
 		if err != nil {
 			fmt.Println("Problem reading input, ", err)
@@ -29,10 +30,19 @@ func main() {
 		}
 
 		//echo
-		if strings.Contains(command[:4], "echo") {
-			// if firstWord == "echo" {
+		if firstWord == "echo" {
 			fmt.Println(command[5:])
 			continue
+		}
+
+		// type
+		if firstWord == "type" {
+			if len(words) == 2 {
+				if words[1] == "echo" || words[1] == "exit" || words[1] == "type" {
+					fmt.Println(words[1] + " is a shell builtin")
+					continue
+				}
+			}
 		}
 
 		fmt.Println(command + ": command not found")
