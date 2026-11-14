@@ -42,7 +42,7 @@ func main() {
 		if firstWord == "type" {
 			buildin := []string{"echo", "exit", "type", "pwd"}
 			if len(words) == 2 {
-					for s := range buildin {
+					for _,s := range buildin {
 						if s == words[1] {
 							fmt.Println(s + " is a shell builtin")
 							break
