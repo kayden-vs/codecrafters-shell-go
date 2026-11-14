@@ -39,21 +39,24 @@ func main() {
 		// type
 		var path string
 		if firstWord == "type" {
-			buildin := []string{"echo", "exit", "type", "pwd"}
+			isBuiltin := false
+			builtin := []string{"echo", "exit", "type", "pwd"}
 			if len(words) == 2 {
-				for _, s := range buildin {
+				for _, s := range builtin {
 					if s == words[1] {
 						fmt.Println(s + " is a shell builtin")
+						isBuiltin = true
 						break
 					}
 				}
-				continue
+				if isBuiltin {
+					continue
+				}
 			}
 
 			// check path
 			path, err = exec.LookPath(words[1])
 			if err == nil {
-				// validExec = true
 				fmt.Println(words[1] + " is " + path)
 				continue
 			}
