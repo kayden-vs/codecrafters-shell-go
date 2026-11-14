@@ -67,7 +67,7 @@ func main() {
 			if err != nil {
 				fmt.Println("Error executing the external command", err)
 			}
-			fmt.Println(string(output))
+			fmt.Print(string(output))
 			continue
 		}
 
