@@ -31,7 +31,7 @@ func main() {
 		//echo
 		if strings.Contains(command[:4], "echo") {
 			// if firstWord == "echo" {
-			fmt.Println(command[5:] + "\n")
+			fmt.Println(command[5:])
 			continue
 		}
 
