@@ -47,6 +47,7 @@ func main() {
 				path, err := exec.LookPath(words[1])
 				if err == nil {
 					fmt.Println(words[1] + " is " + path)
+					continue
 				}
 			}
 			fmt.Println(command[5:] + ": not found")
