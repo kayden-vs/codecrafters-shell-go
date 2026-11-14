@@ -40,10 +40,14 @@ func main() {
 		// type
 		var path string
 		if firstWord == "type" {
+			buildin := []string{"echo", "exit", "type", "pwd"}
 			if len(words) == 2 {
-				if words[1] == "echo" || words[1] == "exit" || words[1] == "type" {
-					fmt.Println(words[1] + " is a shell builtin")
-					continue
+					for s := range buildin {
+						if s == words[1] {
+							fmt.Println(s + " is a shell builtin")
+							continue
+						}
+					}
 				}
 			}
 
