@@ -89,14 +89,23 @@ func main() {
 			continue
 		}
 
-		// cd (absolute path)
+		// cd
 		if firstWord == "cd" {
 			path := words[1]
+
+			if path == "~" {
+				path, err = os.UserHomeDir()
+				if err != nil {
+					fmt.Print("Couldn't find the home directory")
+					continue
+				}
+			}
 
 			err = os.Chdir(path)
 			if err != nil {
 				fmt.Print("cd: " + path + ": No such file or directory \n")
 			}
+
 			continue
 		}
 
