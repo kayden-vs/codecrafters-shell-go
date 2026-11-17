@@ -17,6 +17,9 @@ func main() {
 		fmt.Print("$ ")
 
 		command, err := bufio.NewReader(os.Stdin).ReadString('\n')
+		if len(command) < 2 {
+			continue
+		}
 		command = command[:len(command)-1]
 		words := strings.Fields(command)
 		firstWord := words[0]
@@ -90,14 +93,6 @@ func main() {
 		if firstWord == "cd" {
 			path := words[1]
 
-			// check if dir exists
-			// _, err := os.Stat(path)
-			// if err != nil {
-			// 	// doesnt exist
-			// 	fmt.Print("cd: " + path + ": No such file or directory \n")
-			// 	continue
-			// }
-			// exist
 			err = os.Chdir(path)
 			if err != nil {
 				fmt.Print("cd: " + path + ": No such file or directory \n")
