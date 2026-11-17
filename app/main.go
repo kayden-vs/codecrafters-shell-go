@@ -86,6 +86,25 @@ func main() {
 			continue
 		}
 
+		// cd (absolute path)
+		if firstWord == "cd" {
+			path := words[1]
+
+			// check if dir exists
+			// _, err := os.Stat(path)
+			// if err != nil {
+			// 	// doesnt exist
+			// 	fmt.Print("cd: " + path + ": No such file or directory \n")
+			// 	continue
+			// }
+			// exist
+			err = os.Chdir(path)
+			if err != nil {
+				fmt.Print("cd: " + path + ": No such file or directory \n")
+			}
+			continue
+		}
+
 		fmt.Println(command + ": command not found")
 	}
 }
